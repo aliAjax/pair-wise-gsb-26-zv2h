@@ -18,7 +18,9 @@ body {
 }
 
 button,
-input {
+input,
+select,
+textarea {
   font: inherit;
 }
 
@@ -214,13 +216,63 @@ label {
   gap: 8px;
 }
 
-input {
+input,
+select,
+textarea {
   width: 100%;
   min-height: 42px;
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 0 12px;
+  padding: 9px 12px;
   color: #172033;
+  background: #ffffff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+label.has-error input,
+label.has-error select,
+label.has-error textarea {
+  border-color: #e11d48;
+}
+
+.field-error {
+  color: #e11d48;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.save-tip {
+  margin-bottom: 14px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, #ffffff);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, #ffffff);
+  font-size: 14px;
+}
+
+.filter-chips button.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.filter-chips button.risk-high.active {
+  background: #e11d48;
+  border-color: #e11d48;
+}
+
+.filter-chips button.risk-mid.active {
+  background: var(--warn);
+  border-color: var(--warn);
+}
+
+.filter-chips button.risk-stable.active {
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .record-list {
@@ -239,6 +291,11 @@ input {
   background: #fbfdff;
 }
 
+.record-card.is-high-risk {
+  border-left: 4px solid #e11d48;
+  background: #fff7f8;
+}
+
 .record-index {
   display: grid;
   place-items: center;
@@ -250,14 +307,75 @@ input {
   font-weight: 800;
 }
 
-.record-card h3 {
-  margin-bottom: 6px;
+.record-card.is-high-risk .record-index {
+  background: #e11d48;
 }
 
-.record-card p {
+.record-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.record-meta h3 {
   margin-bottom: 0;
+}
+
+.risk-badge,
+.topic-tag {
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.topic-tag {
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 9%, #ffffff);
+}
+
+.risk-stable {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, #ffffff);
+}
+
+.risk-watch {
+  color: #b45309;
+  background: color-mix(in srgb, var(--warn) 16%, #ffffff);
+}
+
+.risk-mid {
+  color: #c2410c;
+  background: #ffedd5;
+}
+
+.risk-high {
+  color: #e11d48;
+  background: #ffe4e9;
+}
+
+.record-body p {
+  margin-bottom: 4px;
   color: #526070;
   line-height: 1.6;
+}
+
+.record-body p b {
+  display: inline-block;
+  min-width: 68px;
+  color: #172033;
+  font-weight: 700;
+}
+
+.empty-tip {
+  margin-bottom: 0;
+  padding: 28px;
+  text-align: center;
+  color: #64748b;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
 }
 
 @media (max-width: 860px) {
